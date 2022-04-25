@@ -31,7 +31,7 @@ I want to allocate seats to customers, so that I can control reserved seating fo
 * Write a program that allocates seats based on a random integer “number of seats” between 1 and 3
 * Your program should allocate the required number of seats from the available seats starting from seat A1 and filling the auditorium from
 left to right, front to back
-* All of the seats are available for sale when the program starts
+* All the seats are available for sale when the program starts
 * The program should continue to allocate a random number of seats until it finds there are not enough seats left to complete the request
 * Once there are not enough seats available to be allocated then the program can halt
 
@@ -39,13 +39,13 @@ left to right, front to back
 * Quite clearly this is a minimal requirement, so the "Cinema" class will be the base class for better implementations
 * Need a constructor - assume base of 15 seats as described, but allow for larger (and smaller) number of seats and different choice of row width
 * Need a method to request tickets.  Does not give spec for this, but will implement a cs list of seat numbers, or an error message
-* Need a method to either get number of free seets, or if any free seets
-* Clearly needs a "test" function to use up all seets
+* Need a method to either get number of free seats, or if any free seats
+* Clearly needs a "test" function to use up all seats
 
 ### TDD
-* test for error input (< 1 and > 3 seets) 
+* test for error input (< 1 and > 3 seats) 
 * test for get 1, 2 & 3
-* test for get 3 seets five times works
-* test for get 2 seets seven times works
-* test for get 1 seets fifteen times works
+* test for get 3 seats five times works
+* test for get 2 seats seven times works
+* test for get 1 seats fifteen times works
 * test 1 to 2 or 3 three more gets rejected once full
