@@ -39,6 +39,8 @@ public class Cinema {
      * @return seat number as row letter and seat number in row
      */
     public String allocateSeat(){
+        if (freeSeats <= 0)
+            return "Error: no free seats";
         int number = 15 - freeSeats;
         freeSeats--;
         char row = "ABC".charAt(number / rowWidth);
@@ -53,6 +55,10 @@ public class Cinema {
      * @return seat comma separated list of seat numbers (as row letter and seat number in row)
      */
     public String allocateSeats(int request){
+        if (request < 1 || request > 3)
+            return "Error: invalid number of seats requested";
+        if (!haveSeats(request))
+            return "Error: not enough free seats";
         StringBuilder response = new StringBuilder();
         for (int i = 0; i < request; i++) {
             response.append(allocateSeat()).append(", ");
@@ -66,7 +72,7 @@ public class Cinema {
      * @return true iff there are this number of seats left
      */
     public boolean haveSeats(int request){
-        return true;
+        return freeSeats >= request;
     }
 
 }

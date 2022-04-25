@@ -69,17 +69,20 @@ class CinemaTest {
 
     @ParameterizedTest
     @CsvSource(value = {
-            "1: 1: 15",
-            "2: 1: 15",
-            "3: 1: 15",
-            "2: 2: 7",
-            "3: 2: 7",
-            "1: 3: 5",
-            "2: 3: 5",
-            "3: 3: 5"
+            "1: 15: 1",
+            "2: 14: 1",
+            "2: 15: 1",
+            "3: 13: 1",
+            "3: 14: 1",
+            "3: 15: 1",
+            "2: 7: 2",
+            "3: 7: 2",
+            "1: 5: 3",
+            "2: 5: 3",
+            "3: 5: 3"
     }, delimiter = ':')
     void checkNoSeats(int request, int n, int times) {
-        for (int i = 0; i < n-1; i++) {
+        for (int i = 0; i < n; i++) {
             cinnamon.allocateSeats(times);
         }
         assertFalse(cinnamon.haveSeats(request), "No enough seats for " + request + " seats after requesting " + (n * times));
