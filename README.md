@@ -1,0 +1,2 @@
+# CinnamonCinemasMovieTheatreSeatingChallenge
+Cinnamon Cinemas Movie Theatre Seating Challenge
