@@ -23,7 +23,7 @@ class CinemaTest {
     }
 
     @ParameterizedTest
-    @CsvSource({"1, A1", "2, A1, A2", "3, A1, A2, A3"})
+    @CsvSource(value = {"1: A1", "2: A1, A2", "3: A1, A2, A3"}, delimiter = ':')
     void checkAllocateSeats(int n, String expected) {
         assertEquals(expected, cinnamon.allocateSeats(n), "Can allocate " + n + " seat");
     }
