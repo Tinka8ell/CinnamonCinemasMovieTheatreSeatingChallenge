@@ -5,7 +5,7 @@ package com.tinkabell.kata;
  */
 public class Cinema {
 
-    private final int freeSeats;
+    private int freeSeats;
     private final int rowWidth;
 
     /**
@@ -39,7 +39,9 @@ public class Cinema {
      * @return seat number as row letter and seat number in row
      */
     public String allocateSeat(){
-        return "A1";
+        int pos = 15 - freeSeats;
+        freeSeats--;
+        return "A1A2A3".substring(pos * 2, (pos + 1) * 2);
     }
 
     /**
@@ -49,7 +51,11 @@ public class Cinema {
      * @return seat comma separated list of seat numbers (as row letter and seat number in row)
      */
     public String allocateSeats(int request){
-        return allocateSeat();
+        StringBuilder response = new StringBuilder();
+        for (int i = 0; i < request; i++) {
+            response.append(allocateSeat()).append(", ");
+        }
+        return response.substring(0, response.length() - 2); // lose last comma
     }
 
     /**
