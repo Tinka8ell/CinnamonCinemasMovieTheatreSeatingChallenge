@@ -39,9 +39,11 @@ public class Cinema {
      * @return seat number as row letter and seat number in row
      */
     public String allocateSeat(){
-        int pos = 15 - freeSeats;
+        int number = 15 - freeSeats;
         freeSeats--;
-        return "A1A2A3".substring(pos * 2, (pos + 1) * 2);
+        char row = "ABC".charAt(number / rowWidth);
+        number %= rowWidth;
+        return "" + row + (number + 1);
     }
 
     /**
