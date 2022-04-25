@@ -60,4 +60,29 @@ class CinemaTest {
         assertEquals("A1", cinnamon.allocateSeat(), "Can allocate 1 seat");
     }
 
+    @ParameterizedTest
+    @CsvSource({"0", "4", "-1", "10"})
+    void checkInvalidInput(int request){
+        String response = cinnamon.allocateSeats(request);
+        assertTrue(response.startsWith("Error"), "Error for " + request + " seats request");
+    }
+
+    @ParameterizedTest
+    @CsvSource(value = {
+            "1: 1: 15",
+            "2: 1: 15",
+            "3: 1: 15",
+            "2: 2: 7",
+            "3: 2: 7",
+            "1: 3: 5",
+            "2: 3: 5",
+            "3: 3: 5"
+    }, delimiter = ':')
+    void checkNoSeats(int request, int n, int times) {
+        for (int i = 0; i < n-1; i++) {
+            cinnamon.allocateSeats(times);
+        }
+        assertFalse(cinnamon.haveSeats(request), "No enough seats for " + request + " seats after requesting " + (n * times));
+    }
+
 }
